@@ -96,6 +96,8 @@ void Game::update()
 	//m_go.update();
 	//m_player.update();
 
+	//TheInputHandler::Instance()->update();
+
 	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
@@ -105,14 +107,22 @@ void Game::update()
 void Game::clean()
 {
 	std::cout << "cleaning game\n";
+	TheInputHandler::Instance()->clean();
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
 }
 
+void Game::quit()
+{
+	m_bRunning = false;
+	SDL_Quit();
+}
+
 void Game::handleEvents()
 {
-	SDL_Event event;
+	TheInputHandler::Instance()->update();
+	/*SDL_Event event;
 	if (SDL_PollEvent(&event))
 	{
 		switch (event.type)
@@ -123,7 +133,7 @@ void Game::handleEvents()
 		default:
 			break;
 		}
-	}
+	}*/
 }
 
 Game* Game::Instance()

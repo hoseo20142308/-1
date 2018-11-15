@@ -1,4 +1,4 @@
-/*
+/*#include "GameObject.h"
 
 void GameObject::load(int x, int y, int width, int height,
 	std::string textureID)
@@ -23,6 +23,4 @@ void GameObject::update()
 {
 	m_x += 1;
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
-}
-
-*/
+}*/

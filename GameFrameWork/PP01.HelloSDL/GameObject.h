@@ -2,9 +2,7 @@
 
 #include <iostream>
 #include "SDL.h"
-#include "TextureManager.h"
 #include "LoaderParams.h"
-using namespace std;
 
 class GameObject
 {

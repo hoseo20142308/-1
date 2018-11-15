@@ -7,6 +7,7 @@
 #include "SDLGameObject.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "InputHandler.h"
 #include <vector>
 
 
@@ -20,6 +21,7 @@ public:
 	void update();
 	void handleEvents();
 	void clean();
+	void quit();
 	bool running() { return m_bRunning; }
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
