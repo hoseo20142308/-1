@@ -16,6 +16,10 @@ public:
 
 	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
+	static TextureManager* Instance();
 private:
+	TextureManager() {}
 };
+
+typedef TextureManager TheTextureManager;
 
