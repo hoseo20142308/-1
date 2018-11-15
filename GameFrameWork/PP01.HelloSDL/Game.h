@@ -2,6 +2,8 @@
 #include <SDL_image.h>
 #include "SDL.h"
 #include "TextureManager.h"
+#include "GameObject.h"
+#include "Player.h"
 
 
 class Game
@@ -17,6 +19,10 @@ public:
 	void clean();
 	bool running() { return m_bRunning; }
 private:
+
+	GameObject m_go;
+	Player m_player;
+
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	// SDL_Texture* m_pTexture;			// the new SDL_Texture variable
