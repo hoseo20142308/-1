@@ -27,9 +27,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			return false;
 		}
 
-		m_go.load(100, 100, 128, 82, "animate");
-		m_player.load(300, 300, 128, 82, "animate");
-
 		//m_textureManager.load("Assets/animate-alpha.png", "animate", m_pRenderer);
 
 		//m_sourceRectangle.w = 128;
@@ -40,7 +37,17 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		//m_destinationRectangle.w = m_sourceRectangle.w;
 		//m_destinationRectangle.h = m_sourceRectangle.h;
 
+		m_go = new GameObject();
+		m_player = new Player();
+		m_enemy = new Enemy();
 
+		m_go->load(100, 100, 128, 82, "animate");
+		m_player->load(300, 300, 128, 82, "animate");
+		m_enemy->load(0, 0, 128, 82, "animate");
+
+		m_gameObjects.push_back(m_go);
+		m_gameObjects.push_back(m_player);
+		m_gameObjects.push_back(m_enemy);
 	}
 	else
 	{
@@ -68,16 +75,26 @@ void Game::render()
 	//TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
 	//TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 
-	m_go.draw(m_pRenderer);
-	m_player.draw(m_pRenderer);
+	//m_go.draw(m_pRenderer);
+	//m_player.draw(m_pRenderer);
+
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw(m_pRenderer);
+	}
 
 	SDL_RenderPresent(m_pRenderer);	// 화면 제시하기
 }
 
 void Game::update()
 {
-	m_go.update();
-	m_player.update();
+	//m_go.update();
+	//m_player.update();
+
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 }
 
 void Game::clean()
